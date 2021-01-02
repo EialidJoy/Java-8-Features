@@ -15,7 +15,7 @@ public class PersonJava7ExerciseSolutionUsingInterfaceInCondition {
 				new Person("Mizanur","Rony", 23),
 				new Person("Ashraf","Shahadat", 25),
 				new Person("Khalid","Saifullah", 28),
-				new Person("mushfiqur","Sharot", 25)
+				new Person("Mushfiqur","Sharot", 25)
 				);
 		
 		// Task1- sort by last name
@@ -28,9 +28,6 @@ public class PersonJava7ExerciseSolutionUsingInterfaceInCondition {
 			}
 		});
 		
-		
-		
-		
 		// Task2- create a method to print all the lists sorted by last name
 		
 		printPersonsList(personsList);
@@ -39,7 +36,7 @@ public class PersonJava7ExerciseSolutionUsingInterfaceInCondition {
 		// Task3- create a method to prints all the people that have last name beginning with "S"
 		System.out.println();
 		System.out.println("Printing last name starts with S");
-		printLastNameBeginningWithC(personsList, new Behaviour() {
+		printNameConditionally(personsList, new Behaviour() {
 			
 			@Override
 			public boolean condition(Person p) {
@@ -48,12 +45,21 @@ public class PersonJava7ExerciseSolutionUsingInterfaceInCondition {
 			}
 		});
 		
-		
-		
+		// Task4- create a method to prints all the people that have First name beginning with "M"
+		System.out.println();
+		System.out.println("Printing First name starts with M");
+		printNameConditionally(personsList, new Behaviour() {
+			
+			@Override
+			public boolean condition(Person p) {
+				
+				return p.getFirstName().startsWith("M");
+			}
+		});
 
 	}
 
-	private static void printLastNameBeginningWithC(List<Person> personsList, Behaviour behaviour) {
+	private static void printNameConditionally(List<Person> personsList, Behaviour behaviour) {
 		for(Person p:personsList) {
 			if(behaviour.condition(p)) {
 				System.out.println(p);
@@ -61,7 +67,7 @@ public class PersonJava7ExerciseSolutionUsingInterfaceInCondition {
 		}
 		
 	}
-
+	
 	private static void printPersonsList(List<Person> personsList) {
 		for(Person p: personsList) {
 			System.out.println(p);
