@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class PersonJava7ExerciseSolutionUsingInterfaceInCondition {
 
@@ -36,11 +37,10 @@ public class PersonJava7ExerciseSolutionUsingInterfaceInCondition {
 		// Task3- create a method to prints all the people that have last name beginning with "S"
 		System.out.println();
 		System.out.println("Printing last name starts with S");
-		printNameConditionally(personsList, new Behaviour() {
-			
+		printNameConditionally(personsList, new Predicate<Person>() {
+
 			@Override
-			public boolean condition(Person p) {
-				
+			public boolean test(Person p) {
 				return p.getLastName().startsWith("S");
 			}
 		});
@@ -48,20 +48,19 @@ public class PersonJava7ExerciseSolutionUsingInterfaceInCondition {
 		// Task4- create a method to prints all the people that have First name beginning with "M"
 		System.out.println();
 		System.out.println("Printing First name starts with M");
-		printNameConditionally(personsList, new Behaviour() {
-			
+		printNameConditionally(personsList, new Predicate<Person>() {
+
 			@Override
-			public boolean condition(Person p) {
-				
+			public boolean test(Person p) {
 				return p.getFirstName().startsWith("M");
 			}
 		});
 
 	}
 
-	private static void printNameConditionally(List<Person> personsList, Behaviour behaviour) {
+	private static void printNameConditionally(List<Person> personsList, Predicate<Person> predicate) {
 		for(Person p:personsList) {
-			if(behaviour.condition(p)) {
+			if(predicate.test(p)) {
 				System.out.println(p);
 			}
 		}
@@ -76,14 +75,5 @@ public class PersonJava7ExerciseSolutionUsingInterfaceInCondition {
 	}
 
 }
-
-interface Behaviour{
-	boolean condition(Person p);
-}
-
-
-
-
-
 
 
